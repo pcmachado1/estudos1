@@ -16,7 +16,7 @@ class Usuario {
     private $nome;
     private $sobrenome;
     private $email;
-    private $login;
+    private $usuario;
     private $senha;
     private $status;
     private $image;
@@ -39,8 +39,8 @@ class Usuario {
         return $this->email;
     }
 
-    function getLogin() {
-        return $this->login;
+    function getUsuario() {
+        return $this->usuario;
     }
 
     function getSenha() {
@@ -61,8 +61,8 @@ class Usuario {
         $this->email = $email;
     }
 
-    function setLogin($login) {
-        $this->login = $login;
+    function setUsuario($usuario) {
+        $this->usuario = $usuario;
     }
 
     function setSenha($senha) {

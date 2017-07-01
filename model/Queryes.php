@@ -8,10 +8,10 @@
 
 /**
  * Description of Queryes
- *
- * @author root
+ * Classe para definição de queryes. 
+ * @author Paulo Machado
  */
-include '../config.php';
+
 class Queryes {
     private $query;
     
@@ -22,8 +22,9 @@ class Queryes {
     
     //select * from usuario join usuarioperfil on usuario.id = usuarioperfil.fk_usuario JOIN perfil on perfil.id = usuarioperfil.fk_perfil WHERE usuario.login='pcmachado' and usuario.senha='12345678';
     public function efetuarLogin(Usuario $usuario) {
-        $this->query = "select * from usuario join usuarioperfil on usuario.id = usuarioperfil.fk_usuario JOIN perfil on perfil.id = usuarioperfil.fk_perfil WHERE usuario.login = '".$usuario->getLogin().
-                "' and usuario.senha='".$usuario->getSenha()."'";
+        $this->query = "SELECT * FROM usuario WHERE "
+                . "login ='".$usuario->getUsuario()."'"
+                . " and senha='".$usuario->getSenha()."';";
         return $this->query;
     }
     public function atualizarPerfil(Usuario $usuario) {

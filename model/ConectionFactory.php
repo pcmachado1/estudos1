@@ -11,7 +11,7 @@
  *
  * @author root
  */
-include '../config.php';
+
 class ConectionFactory extends Conection{
     private $con;
     public function __construct() {
