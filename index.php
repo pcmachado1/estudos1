@@ -1,8 +1,4 @@
 <?php
-    function __autoload($classe){
-        include 'model/'.$classe.'.php';
-    }
-    
    
     switch ($_GET['page']) 
     {
