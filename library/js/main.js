@@ -6,9 +6,14 @@ $(document).ready(function(){
         $.post('../estudos1/controller/LoginController.php',
                 {usuario:usuario,senha:senha},
                 function(data){
-                        console.log(data);
                         
                         
+                       if(data == 'true'){
+                          console.log('usuario logado com sucesso');
+                          location.assign('../view/welcome.html');
+                       }else{
+                          console.log('Nao foi possivel logar');  
+                       }
                                 }
                 );
     });

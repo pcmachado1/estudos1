@@ -19,6 +19,9 @@ $query->efetuarLogin($usuario);
 
 
 
+
+
+
 try {
    $result = $conexao->getConection()->
    query($query->efetuarLogin($usuario));
