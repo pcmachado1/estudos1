@@ -6,11 +6,11 @@ $(document).ready(function(){
         $.post('../estudos1/controller/LoginController.php',
                 {usuario:usuario,senha:senha},
                 function(data){
-                        
+                        console.log(data);
                         
                        if(data == 'true'){
                           console.log('usuario logado com sucesso');
-                          location.assign('../view/welcome.html');
+                          location.assign('/estudos1/?page=welcome');
                        }else{
                           console.log('Nao foi possivel logar');  
                        }
@@ -18,5 +18,14 @@ $(document).ready(function(){
                 );
     });
     
+    
+    
 });
+function loadWelcome(){
+        $.post('../estudos1/controller/WelcomeController.php',{},function(data){
+            console.log("retorno: "+data);
+            var jsonObject = JSON.parse(data);
+            $('#welcome').html('Welcome Back '+jsonObject[0].nome+" "+jsonObject[0].sobrenome);
+        });
+    }
 

@@ -23,13 +23,13 @@ $query->efetuarLogin($usuario);
 
 
 try {
-   $result = $conexao->getConection()->
+   $result = $conexao->getConectionRemote()->
    query($query->efetuarLogin($usuario));
    
    $numRows = $result->rowCount();
-   
+    
    if($numRows > 0){
-       $_SESSION['userSession'] = json_encode($result->fetchAll()); 
+       $_SESSION['userSession'] = $result->fetchAll(); 
        echo 'true';
    }else{
        echo 'false';
