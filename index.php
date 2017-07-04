@@ -17,6 +17,14 @@
             include 'view/footer.html';
             
         break;
+        
+        case 'usuarios':
+           
+            include 'view/header.html';
+            include 'view/usuarios.html';
+            include 'view/footer.html';
+            
+        break;
 
         default:
             
