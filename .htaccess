@@ -1,7 +1,13 @@
 
 # HTID:649159: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value SMTP 'smtp-mail.outlook.com'
+php_value smtp_port '587'
+php_value sendmail_from 'paulo_chm@hotmail.com'
 php_value display_errors 1
 # DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:649159:
+
+    Options -Indexes 
+
 <filesMatch "\.(html|js|css)$">
 FileETag None
 <ifModule mod_headers.c>

@@ -1,8 +1,23 @@
 $(document).ready(function(){
+    $('#txtUsuario').change(function(){
+        if(name == ""){
+           $("#errorName").html("Favor Preencher o Campo"); 
+           console.log("Favor Preencher o Campo");
+           event.preventDefault();
+        }else{
+           $("#errorName").html(""); 
+           console.log("Campo limpo");
+        }
+    });
     $('#btnLogin').click(function(){
         var usuario = $('#txtUsuario').val();
         var senha = $('#txtSenha').val();
-        
+        if(usuario==''){
+            $("#errorUser").html("Favor Preencher o Campo");
+        }
+        if(senha==''){
+            $("#errorPass").html("Favor Preencher o Campo");
+        }
         $.post('../estudos1/controller/LoginController.php',
                 {usuario:usuario,senha:senha},
                 function(data){
