@@ -36,6 +36,12 @@ class Queryes {
                         "' where id = ".$usuario->getId()." ";
         return $this->query;
     }
+    public function novoCadastro(Usuario $usuario) {
+        $this->query = "INSERT INTO usuario (nome,sobrenome,email,login,senha) values ".
+                    "('$usuario->getNome()','$usuario->getSobrenome','$usuario->getEmail()')";
+        
+        echo $this->query;
+    }
     public function atualizarImagem(Usuario $usuario) {
         $this->query = "UPDATE usuario set image = '".$usuario->getImage().
                         "' where id = ".$usuario->getId()." ";

@@ -1,23 +1,42 @@
 $(document).ready(function(){
     $('#txtUsuario').change(function(){
-        if(name == ""){
-           $("#errorName").html("Favor Preencher o Campo"); 
+        var usuario = $('#txtUsuario').val();
+        if(usuario == ""){
+           $("#errorUser").html("Favor Preencher o Campo"); 
            console.log("Favor Preencher o Campo");
            event.preventDefault();
         }else{
-           $("#errorName").html(""); 
+           $("#errorUser").html(""); 
+           console.log("Campo limpo");
+        }
+    });
+    $('#txtSenha').change(function(){
+        var senha = $('#txtSenha').val();
+        if(senha== ""){
+           $("#errorPass").html("Favor Preencher o Campo"); 
+           console.log("Favor Preencher o Campo");
+           event.preventDefault();
+        }else{
+           $("#errorPass").html(""); 
            console.log("Campo limpo");
         }
     });
     $('#btnLogin').click(function(){
         var usuario = $('#txtUsuario').val();
         var senha = $('#txtSenha').val();
-        if(usuario==''){
-            $("#errorUser").html("Favor Preencher o Campo");
-        }
-        if(senha==''){
-            $("#errorPass").html("Favor Preencher o Campo");
-        }
+        if(usuario == '' || senha == ''){
+            if(usuario==''){
+                $("#errorUser").html("Favor Preencher o Campo");
+                console.log('erroUser');
+                event.preventDefault();
+            }
+            if(senha==''){
+                $("#errorPass").html("Favor Preencher o Campo");
+                console.log('erroPass');
+                event.preventDefault();
+            }
+        }else{
+        
         $.post('../estudos1/controller/LoginController.php',
                 {usuario:usuario,senha:senha},
                 function(data){
@@ -31,7 +50,28 @@ $(document).ready(function(){
                        }
                                 }
                 );
+        }
     });
+    $('#btnCadastro').click(function(){
+        var objectCadastro = $('input');
+        console.log("nome"+objectCadastro[0].value);
+        console.log("sobrenome"+objectCadastro[1].value);
+        console.log("email"+objectCadastro[2].value);
+        console.log("login"+objectCadastro[3].value);
+        console.log("senha"+objectCadastro[4].value);
+        
+        $.post('../estudos1/controller/CadastroController.php',
+            {nome:objectCadastro[0].value,
+             sobrenome:objectCadastro[1].value,
+             email:objectCadastro[2].value,
+             login:objectCadastro[3].value,
+             senha:objectCadastro[4].value
+            },function(data){
+                console.log(data)
+                }
+            );
+    });
+    
     
     
     
@@ -48,7 +88,9 @@ function loadUsers(){
         var jsonObject = JSON.parse(data);
         for(i=0;i<jsonObject.length;i++){
             console.log(jsonObject[i].nome);
-            $('#usersTable').append("<tr><td>"+jsonObject[i].nome+"</td>"+
+            $('#usersTable').append("<tr>"+
+                                        "<td><img src=images/"+jsonObject[i].image+" class=\"img-thumbnail\" width=\"50px\" heigth=\"50px\" /></td>"+
+                                        "<td>"+jsonObject[i].nome+"</td>"+
                                         "<td>"+jsonObject[i].sobrenome+"</td>"+
                                         "<td>"+jsonObject[i].email+"</td>"+
                                         "<td>"+jsonObject[i].sobrenome+"</td>"+
