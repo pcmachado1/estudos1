@@ -38,9 +38,20 @@ class Queryes {
     }
     public function novoCadastro(Usuario $usuario) {
         $this->query = "INSERT INTO usuario (nome,sobrenome,email,login,senha) values ".
-                    "('$usuario->getNome()','$usuario->getSobrenome','$usuario->getEmail()')";
+                    "('".$usuario->getNome().
+                    "','".$usuario->getSobrenome().
+                    "','".$usuario->getEmail().
+                    "','".$usuario->getUsuario().
+                    "','".$usuario->getSenha()."');";
         
         return $this->query;
+    }
+    public function getIdNewUser(Usuario $usuario){
+        $this->query = "SELECT * FROM usuario where nome=".$usuario->getNome().
+                " and sobrenome=".$usuario->getSobrenome().
+                " and email=".$usuario->getEmail()." ;";
+        
+        
     }
     public function atualizarImagem(Usuario $usuario) {
         $this->query = "UPDATE usuario set image = '".$usuario->getImage().

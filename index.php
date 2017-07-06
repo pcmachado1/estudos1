@@ -42,7 +42,7 @@
         break;
         
         case 'usuarios':
-            var_dump($_SESSION['userSession']);
+           
            if($_SESSION['userSession']=='NULL' || $_SESSION['userSession']==''){
                include 'view/header.html';
                 include 'view/login.html';
