@@ -40,6 +40,14 @@
             include 'view/footer.html';
             
         break;
+    
+        case 'location':
+            
+            include 'view/header.html';
+            include 'view/location.html';
+            include 'view/footer.html';
+            
+        break;
         
         case 'usuarios':
            
