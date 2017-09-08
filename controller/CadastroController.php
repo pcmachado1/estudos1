@@ -17,6 +17,6 @@ $query = new Queryes();
 
 echo $query->novoCadastro($usuario);
 
-$result = $conexao->getConectionRemote()->query($query->novoCadastro($usuario));
+$result = $conexao->getConectionLocal()->query($query->novoCadastro($usuario));
 
 $result->fetchAll();

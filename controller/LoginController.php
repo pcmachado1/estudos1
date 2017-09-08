@@ -23,7 +23,7 @@ $query->efetuarLogin($usuario);
 
 
 try {
-   $result = $conexao->getConectionRemote()->
+   $result = $conexao->getConectionLocal()->
    query($query->efetuarLogin($usuario));
    
    $numRows = $result->rowCount();

@@ -63,6 +63,20 @@
             
             
         break;
+         case 'cams':
+           
+           if($_SESSION['userSession']=='NULL' || $_SESSION['userSession']==''){
+               include 'view/header.html';
+                include 'view/login.html';
+                include 'view/footer.html';
+           }else{
+                include 'view/header.html';
+                include 'view/cams.html';
+                include 'view/footer.html';
+           }
+            
+            
+        break;
 
         default:
             

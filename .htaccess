@@ -25,4 +25,5 @@ RewriteRule ^login?$ /index.php?page=login
 RewriteRule ^welcome?$ /index.php?page=welcome
 RewriteRule ^usuarios?$ /index.php?page=usuarios
 RewriteRule ^teste?$ /index.php?page=teste
+RewriteRule ^cams?$ /index.php?page=cams
 RewriteRule ^layout?$ /index.php?page=layout

@@ -68,7 +68,7 @@ $(document).ready(function(){
              login:objectCadastro[3].value,
              senha:objectCadastro[4].value
             },function(data){
-                console.log(data)
+                console.log(data);
                 }
             );
     });
