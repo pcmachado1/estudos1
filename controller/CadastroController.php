@@ -15,8 +15,32 @@ $conexao = new ConectionFactory();
 $query = new Queryes();
 //var_dump($usuario);
 
-echo $query->novoCadastro($usuario);
+$result1 = $conexao->getConectionLocal()->query($query->getIdNewUser($usuario));
 
-$result = $conexao->getConectionLocal()->query($query->novoCadastro($usuario));
+//print_r($result1->fetchAll());
+//echo $result1->rowCount();
+if($result1->rowCount() != 0){
+    echo "Usuario Existe no sistema";
+}else{
+   //echo $query->novoCadastro($usuario);
 
-$result->fetchAll();
+    $result = $conexao->getConectionLocal()->query($query->novoCadastro($usuario));
+    
+    $result->fetchAll();
+
+    //echo $query->getIdNewUser($usuario);
+
+    $result1 = $conexao->getConectionLocal()->query($query->getIdNewUser($usuario));
+    
+    $arrayNewUser = $result1->fetchAll(); 
+    
+    echo $arrayNewUser[0][0];
+    
+    $usuario->setId($arrayNewUser[0][0]);
+    
+    $result2 = $conexao->getConectionLocal()->query($query->perfilInicial($usuario));
+    
+    $result2->fetchAll();
+    
+    
+}

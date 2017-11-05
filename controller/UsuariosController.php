@@ -11,6 +11,6 @@ include '../config.php';
 $query = new Queryes();
 $conexao = new ConectionFactory();
 
-$result = $conexao->getConectionRemote()->query($query->listarUsuarios());
+$result = $conexao->getConectionLocal()->query($query->listarUsuarios());
 echo json_encode($result->fetchAll());
 

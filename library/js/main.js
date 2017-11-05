@@ -1,4 +1,29 @@
 $(document).ready(function(){
+    //
+    var usersTable = $("#usersTable tbody");
+    
+    console.log(usersTable);
+    $(usersTable).click(function(){
+        //console.log(this);
+        $("#usersTable tbody tr").each(function() {
+        //var teste = $(this).children('td');
+            $(this).click(function(){
+                //console.log(this);
+                var teste = $(this).children('td');
+                console.log(teste[0]);
+                var ele = teste[0];
+                ele.className = "testeclass";
+                ele.style.transform = "scale(5)";
+                ele.style.transform = "scale(5)";
+            });
+        //console.log(teste);
+            });
+
+        //var teste = $(this);  
+
+        //console.log(teste);
+    });
+    //
     $('#txtUsuario').change(function(){
         var usuario = $('#txtUsuario').val();
         if(usuario == ""){
@@ -68,7 +93,9 @@ $(document).ready(function(){
              login:objectCadastro[3].value,
              senha:objectCadastro[4].value
             },function(data){
+                loadUsers();
                 console.log(data);
+                
                 }
             );
     });
@@ -98,13 +125,15 @@ function loadUsers(){
     $.post('../estudos1/controller/UsuariosController.php',{},function(data){
         var jsonObject = JSON.parse(data);
         for(i=0;i<jsonObject.length;i++){
-            console.log(jsonObject[i].nome);
+            console.log(jsonObject[i]);
+            //$('#usersTable').empty();
             $('#usersTable').append("<tr>"+
-                                        "<td><img src=images/"+jsonObject[i].image+" class=\"img-thumbnail\" width=\"50px\" heigth=\"50px\" /></td>"+
+                                        "<td><img data-toggle=\"modal\" data-target=\"#myModal1\" id="+jsonObject[i].id+" src=images/"+jsonObject[i].image+" class=\"img-thumbnail\" width=\"50px\" heigth=\"50px\" /></td>"+
                                         "<td>"+jsonObject[i].nome+"</td>"+
                                         "<td>"+jsonObject[i].sobrenome+"</td>"+
                                         "<td>"+jsonObject[i].email+"</td>"+
-                                        "<td>"+jsonObject[i].sobrenome+"</td>"+
+                                        "<td>"+jsonObject[i].perfilnome+"</td>"+
+                                        "<td>"+jsonObject[i].status+"</td>"+
                                         "</tr>"
                     );
         }

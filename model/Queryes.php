@@ -47,11 +47,11 @@ class Queryes {
         return $this->query;
     }
     public function getIdNewUser(Usuario $usuario){
-        $this->query = "SELECT * FROM usuario where nome=".$usuario->getNome().
-                " and sobrenome=".$usuario->getSobrenome().
-                " and email=".$usuario->getEmail()." ;";
+        $this->query = "SELECT * FROM usuario where nome='".$usuario->getNome().
+                "' and sobrenome='".$usuario->getSobrenome().
+                "' and email='".$usuario->getEmail()."' ;";
         
-        
+        return $this->query;
     }
     public function atualizarImagem(Usuario $usuario) {
         $this->query = "UPDATE usuario set image = '".$usuario->getImage().
@@ -66,6 +66,12 @@ class Queryes {
     }
     public function desativarUsuario(Usuario $usuario) {
         $this->query = "UPDATE usuario set status = '".$usuario->getStatus()."' where id = ".$usuario->getId()."" ;
+        
+        return $this->query;
+    }
+    public function perfilInicial(Usuario $usuario) {
+        
+        $this->query = "INSERT into usuarioperfil (fk_usuario,fk_perfil) VALUES (".$usuario->getId().",2)";
         
         return $this->query;
     }
